@@ -4,7 +4,7 @@
 
 typedef struct tipoAlunos
 {
-    char nome[20];
+    char nome[32];
     unsigned idade;
     int id;
 
@@ -18,7 +18,7 @@ void MeuSelectionSort (tipoAlunos v[],unsigned tamV){
     for(x = 0; x < tamV-1; x++){
         posMenor = x;
         for(y = x+1; y < tamV; y++){
-            if(v[x].idade > v[y].idade){
+            if(strcmp(v[posMenor].nome,v[y].nome)>0){
                 posMenor = y;
             }
         }
@@ -26,6 +26,23 @@ void MeuSelectionSort (tipoAlunos v[],unsigned tamV){
         temp = v[x];
         v[x] = v[posMenor];
         v[posMenor] = temp;
+    }
+}
+
+void MeuInsertSort (tipoAlunos vet[], int tamV){
+    int i,j;
+    tipoAlunos pivot;
+
+    for(i = 1; i < tamV; i++){
+        pivot = vet[i];
+        j = i-1;
+
+        while((j>=0)&&(strcmp(pivot.nome,vet[j].nome)<0)){
+            vet[j+1] = vet[j];
+            j--;
+        }
+
+        vet[j+1] = pivot;
     }
 }
 
@@ -71,10 +88,12 @@ int main(){
     preencherVetor(vetor,tamV);
 
     Mostrar(vetor,tamV);
-
+    
+    //MeuSelectionSort(vetor,tamV);
+    MeuInsertSort(vetor,tamV);
     printf("Vetor Ordenado:\n");
 
-    MeuSelectionSort(vetor,tamV);
+    
     Mostrar(vetor,tamV);
 
     return 0;
