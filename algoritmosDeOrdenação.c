@@ -32,14 +32,14 @@ void MeuSelectionSort (tipoAlunos v[],unsigned tamV){
 void preencherVetor (tipoAlunos v[], unsigned tamV){
     unsigned x;
     for(x=0; x < tamV;x++){
-        printf("\n#####################\n");
+        printf("\n_______________________\n");
         printf("digite o nome: ");
         scanf("%[^\n]%*c",v[x].nome);
         printf("\ndigite a idade: ");
         scanf("%u%*c",&v[x].idade);
         printf("\ndigite o id: ");
         scanf("%d%*c",&v[x].id);
-        printf("\n#####################\n");
+        printf("\n______________________\n");
       
     }
 }
@@ -47,11 +47,11 @@ void preencherVetor (tipoAlunos v[], unsigned tamV){
 void Mostrar (tipoAlunos v[], unsigned tamV){
     unsigned x;
     for(x=0; x < tamV;x++){
-        printf("\n#####################\n");
+        printf("\n--------------------\n");
         printf("nome: %s\n",v[x].nome);
         printf("idade: %u\n",v[x].idade);
         printf("id: %d\n",v[x].id);
-        printf("\n#####################\n");
+        printf("\n--------------------\n");
       
     }
 }
@@ -65,12 +65,14 @@ void Mostrar (tipoAlunos v[], unsigned tamV){
 
 
 int main(){
-    tipoAlunos vetor[5];
-    unsigned tamV = 5;
+    tipoAlunos vetor[3];
+    unsigned tamV = 3;
 
     preencherVetor(vetor,tamV);
 
     Mostrar(vetor,tamV);
+
+    printf("Vetor Ordenado:\n");
 
     MeuSelectionSort(vetor,tamV);
     Mostrar(vetor,tamV);
